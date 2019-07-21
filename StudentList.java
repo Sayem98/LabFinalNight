@@ -5,6 +5,7 @@ public class StudentList {
 	public static void main(String[] args) {
 
 //		Check arguments
+		String fileContent = loadData("students.txt");
 		if(args==null || args.length != 1)
 		{
 			return ;
@@ -12,8 +13,8 @@ public class StudentList {
 		else if(args[0].equals("a")) {
 			System.out.println("Loading data ...");			
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fileContent = bufferedReader.readLine();
+				//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				//String fileContent = bufferedReader.readLine();
 				String words[] = fileContent.split(",");			
 				for(String word : words)
 			 	{ 
@@ -26,8 +27,8 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fileContent = bufferedReader.readLine();
+				//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				//String fileContent = bufferedReader.readLine();
 				System.out.println(fileContent);
 				String words[] = fileContent.split(",");	
 				Random random = new Random();
@@ -55,8 +56,8 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fileContent = bufferedReader.readLine();
+				//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				//String fileContent = bufferedReader.readLine();
 				String words[] = fileContent.split(",");	
 				boolean done = false;
 				String argValue = args[0].substring(1);
@@ -73,8 +74,8 @@ public class StudentList {
 		{
 			System.out.println("Loading data ...");			
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
-				String fileContent = bufferedReader.readLine();
+				//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+				//String fileContent = bufferedReader.readLine();
 				char words[] = fileContent.toCharArray();			
 				boolean in_word = false;
 				int count=0;
@@ -88,6 +89,20 @@ public class StudentList {
 			System.out.println(count +" word(s) found " + words.length);
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
+		}
+	}
+
+	static String loadData(String fileName)
+	{
+		try
+		{
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt"))); 
+			
+			return bufferedReader.readLine();
+		}catch(Exception e)
+		{
+			System.out.println("File not Found");
+			return null;
 		}
 	}
 }
